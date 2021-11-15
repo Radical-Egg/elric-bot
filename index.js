@@ -10,6 +10,7 @@ const {
 
 const reply = require('./src/Reply')
 const query = require('./src/Query');
+const expressListener = require('./src/Server')
 
 require("dotenv").config()
 
@@ -42,10 +43,17 @@ bot.on('document', async (ctx) => {
 bot.on('callback_query', (ctx) => {
     // Explicit usage
     reply.upload(query.api_url, query.FormData)
+    query.user_id = ctx.callbackQuery.from
+
+    console.log(query)
 
     // Using context shortcut
     ctx.answerCbQuery()
   })
+bot.command('hello', (ctx) => {
+    console.log(ctx.message.from)
+})
 bot.launch().then(
     () => {console.log("Launched!")}
 )
+

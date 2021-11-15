@@ -46,4 +46,6 @@ bot.on('callback_query', (ctx) => {
     // Using context shortcut
     ctx.answerCbQuery()
   })
-bot.launch()
+bot.launch().then(
+    () => {console.log("Launched!")}
+)

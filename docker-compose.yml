@@ -1,0 +1,10 @@
+---
+elric:
+  image: elric_bot
+  working_dir: /usr/app
+  volumes:
+  - ./:/usr/app
+  ports:
+    - 4000:4000
+  command: npm start
+  restart: always
